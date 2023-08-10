@@ -10,9 +10,15 @@
     <img th:src="@{/images/TacoCloud.png}" alt="">
 
     <form method="POST" th:object="${taco}">
+        <span class="validation-error"
+              th:if="#{fields.hasErrors('ingredients')}"
+              th:errors="*{ingredients}">Ingredients error</span>
         <div class="grid">
             <div class="ingredient-group" id="wraps">
                 <h3> What to wrap with:</h3>
+                    <!-- Loops thru list corresponding to key value (we added model attributes by type)
+                         not too sure what field does, value determines what checking the box means
+                     -->
                     <div th:each="ingredient: ${wrap}">
                         <input type="checkbox" th:field="*{ingredients}" th:value="${ingredient.id}">
                         <span th:text="${ingredient.name}">INGREDIENT</span>
@@ -60,6 +66,9 @@
         <div>
             <h3>Name your taco creation:</h3>
             <input type="text" th:field="*{name}">
+            <span class="validation-error"
+                  th:if="#{fields.hasErrors('name')}"
+                  th:errors="*{name}">Name error</span>
             <br>
 
             <button>Submit Your Taco</button>
