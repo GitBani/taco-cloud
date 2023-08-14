@@ -1,25 +1,25 @@
-delete from Ingredient_Ref;
-delete from Taco;
-delete from Taco_Order;
+DELETE FROM INGREDIENT_REF;
+DELETE FROM TACO;
+DELETE FROM TACO_ORDER;
 
-delete from Ingredient;
-insert into Ingredient (id, name, type)
+DELETE FROM INGREDIENT;
+INSERT INTO INGREDIENT (id, name, type)
     values ('FLTO', 'Flour Tortilla', 'WRAP');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('COTO', 'Corn Tortilla', 'WRAP');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('GRBF', 'Ground Beef', 'PROTEIN');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('CARN', 'Carnitas', 'PROTEIN');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('TMTO', 'Diced Tomatoes', 'VEGGIES');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('LETC', 'Lettuce', 'VEGGIES');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('CHED', 'Cheddar', 'CHEESE');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('JACK', 'Monterrey Jack', 'CHEESE');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('SLSA', 'Salsa', 'SAUCE');
-insert into Ingredient (id, name, type)
+INSERT INTO INGREDIENT (id, name, type)
     values ('SRCR', 'Sour Cream', 'SAUCE');

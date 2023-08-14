@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import sia.tacocloud.Ingredient;
 import sia.tacocloud.Taco;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public class JdbcOrderRepository implements OrderRepository{
     private final JdbcOperations jdbcOperations;
 
@@ -25,7 +27,7 @@ public class JdbcOrderRepository implements OrderRepository{
     @Transactional
     public TacoOrder save(TacoOrder tacoOrder) {
         PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(
-                "insert into Taco_Order " +
+                "insert into TACO_ORDER " +
                         "(delivery_name, delivery_street, delivery_city, delivery_state, delivery_zip, " +
                         "cc_number, cc_expiration, cc_cvv, placed_at) " +
                         "values (?,?,?,?,?,?,?,?,?)",
@@ -67,7 +69,7 @@ public class JdbcOrderRepository implements OrderRepository{
     private long saveTaco(Long orderId, int orderKey, Taco taco) {
         taco.setCreatedAt(new Date());
         PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(
-                "insert into Taco " +
+                "insert into TACO " +
                         "(name, created_at, taco_order, taco_order_key) " +
                         "values (?,?,?,?)",
                 Types.VARCHAR, Types.TIMESTAMP, Types.BIGINT, Types.BIGINT
@@ -97,7 +99,7 @@ public class JdbcOrderRepository implements OrderRepository{
         int key = 0;
         for (Ingredient ingredient : ingredients) {
             jdbcOperations.update(
-                    "insert into Ingredients_Ref (ingredient, taco, taco_key) " +
+                    "insert into INGREDIENT_REF (ingredient, taco, taco_key) " +
                             "values (?,?,?)",
                     ingredient.getId(), tacoId, key++
             );
