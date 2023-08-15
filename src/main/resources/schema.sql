@@ -31,3 +31,4 @@ CREATE TABLE IF NOT EXISTS INGREDIENT_REF (
     taco bigint NOT NULL,
     taco_key bigint NOT NULL,
     FOREIGN KEY (ingredient_id) REFERENCES INGREDIENT(id)
+);
