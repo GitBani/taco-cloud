@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS TACO (
     name VARCHAR(50) NOT NULL,
     taco_order bigint NOT NULL,
     taco_order_key bigint NOT NULL,
-    created_at TIMESTAMP NOT NULL
+    created_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (taco_order) REFERENCES TACO_ORDER(id)
 );
 
 CREATE TABLE IF NOT EXISTS INGREDIENT (
@@ -28,11 +29,6 @@ CREATE TABLE IF NOT EXISTS INGREDIENT (
 CREATE TABLE IF NOT EXISTS INGREDIENT_REF (
     ingredient_id VARCHAR(4) NOT NULL,
     taco bigint NOT NULL,
-    taco_key bigint NOT NULL
+    taco_key bigint NOT NULL,
+    FOREIGN KEY (ingredient_id) REFERENCES INGREDIENT(id)
 );
-
-ALTER TABLE TACO
-    ADD FOREIGN KEY (taco_order) REFERENCES TACO_ORDER(id);
-
-ALTER TABLE INGREDIENT_REF
-    ADD FOREIGN KEY (ingredient_id) REFERENCES INGREDIENT(id);
