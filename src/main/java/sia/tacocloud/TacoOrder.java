@@ -7,17 +7,24 @@ import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data // Provides toString, hashCode and equals methods to the class
+@Data
+@Table
 public class TacoOrder implements Serializable {
+
     private static final long serializedVersionUID = 1L;
+
+    @Id
     private Long id;
-    private Date placedAt;
+
+    private Date placedAt = new Date();
 
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
@@ -37,7 +44,7 @@ public class TacoOrder implements Serializable {
     @CreditCardNumber(message = "Invalid credit card number")
     private String ccNumber;
 
-    @Pattern(regexp = "^(0[1-9]|1[0-2])([\\/])([2-9][0-9])$", message = "Must be formatted MM/YY")
+    @Pattern(regexp = "^(0[1-9]|1[0-2])/([2-9][0-9])$", message = "Must be formatted MM/YY")
     private String ccExpiration;
 
     @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
