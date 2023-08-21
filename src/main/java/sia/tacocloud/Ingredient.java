@@ -14,10 +14,10 @@ public class Ingredient {
     @Id
     private String id;
 
-//    @Column(nullable = false, length = 25)
+    @Column(nullable = false, length = 25)
     private String name;
 
-//    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 10)
     private Type type;
 
     public enum Type {

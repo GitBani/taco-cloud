@@ -17,12 +17,15 @@ public class Taco {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false, length = 25)
     @NotNull
     @NotBlank(message = "Name cannot be blank")
     @Size(min = 3, max = 25, message = "Name must be 3-25 characters long")
     private String name;
 
+    @Column(nullable = false)
     private Date createdAt = new Date();
+
 
     @NotNull
     @Size(min = 1, message = "You must choose at least 1 ingredient")
