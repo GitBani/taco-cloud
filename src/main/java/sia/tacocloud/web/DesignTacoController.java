@@ -8,9 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import sia.tacocloud.Ingredient.Type;
 import sia.tacocloud.Ingredient;
 import sia.tacocloud.Taco;
@@ -31,11 +28,10 @@ public class DesignTacoController {
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        Iterable<Ingredient> ingredients = ingredientRepo.findAll();
         Type[] types = Ingredient.Type.values();
 
         for (Type type : types) {
-            model.addAttribute(type.toString().toLowerCase(), filterByType((List<Ingredient>) ingredients, type));
+            model.addAttribute(type.toString().toLowerCase(), ingredientRepo.findByType(type));
         }
     }
 
@@ -70,10 +66,4 @@ public class DesignTacoController {
         return "redirect:/orders/current";
     }
 
-    private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
-        return ingredients
-                .stream()
-                .filter(x -> x.getType().equals(type))
-                .collect(Collectors.toList());
-    }
 }

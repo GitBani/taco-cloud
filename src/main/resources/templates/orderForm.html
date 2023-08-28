@@ -15,7 +15,7 @@
         <a th:href="@{/design}" id="another">Design another taco</a>
         <br>
         <span class="validation-error"
-              th:if="#{fields.hasErrors('tacos')}"
+              th:if="${#fields.hasErrors('tacos')}"
               th:errors="*{tacos}">Tacos Error</span>
         <ul>
             <li th:each="taco: ${tacoOrder.tacos}">

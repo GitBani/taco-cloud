@@ -27,6 +27,7 @@ public class TacoOrder implements Serializable {
     @Column(nullable = false)
     private Date placedAt = new Date();
 
+    // Replace these fields with User to bind orders to a user, then the User holds this info
     @Column(nullable = false)
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
