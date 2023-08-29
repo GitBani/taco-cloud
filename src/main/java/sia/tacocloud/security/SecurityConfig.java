@@ -40,13 +40,13 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/design", "/orders").authenticated()
+                                .requestMatchers("/design", "/orders/**").authenticated()
                                 .requestMatchers("/", "/**").permitAll()
                 )
-                .headers(headersConfigurer -> headersConfigurer
-                                                .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
-                )
-                .csrf(AbstractHttpConfigurer::disable)
+//                .headers(headersConfigurer -> headersConfigurer
+//                                                .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
+//                )
+//                .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
