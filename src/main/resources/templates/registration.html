@@ -13,6 +13,7 @@
         Todo:
          input validation,
          potentially fix "confirm" field mapping to nothing by adding that field to RegistrationForm
+            -> turns out this isn't an issue, still may need it to enforce it being equal to the password entered
     -->
     <form method="POST" th:action="@{/register}" id="registerForm">
         <label for="username">Username: </label>

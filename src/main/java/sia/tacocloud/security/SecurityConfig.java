@@ -40,19 +40,22 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/design", "/orders/**").hasRole("USER")
+                                .requestMatchers("/design", "/orders").authenticated()
                                 .requestMatchers("/", "/**").permitAll()
                 )
-                // Look this stuff up later ----------------------------------------------------------------
                 .headers(headersConfigurer -> headersConfigurer
                                                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
                 )
                 .csrf(AbstractHttpConfigurer::disable)
-                // -----------------------------------------------------------------------------------------
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .defaultSuccessUrl("/design", true)
+                )
+                // TODO: Add ability to log out. This may involve creating a user session attribute.
+                .oauth2Login(
+                        oauth2 -> oauth2
+                                .loginPage("/login")
                 );
 
         return http.build();

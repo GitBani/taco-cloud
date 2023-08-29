@@ -13,6 +13,8 @@
         Unable to log in, check your username and password
     </div>
 
+    <a th:href="${'/oauth2/authorization/facebook'}">Sign in with Facebook</a>
+
     <p>New here? Click <a th:href="@{/register}">here</a> to register</p>
 
     <form method="POST" th:action="@{/login}" id="loginForm">
