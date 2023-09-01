@@ -1,10 +1,7 @@
 package sia.tacocloud;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import lombok.Data;
@@ -23,6 +20,9 @@ public class TacoOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne
+    private User user;
 
     @Column(nullable = false)
     private Date placedAt = new Date();

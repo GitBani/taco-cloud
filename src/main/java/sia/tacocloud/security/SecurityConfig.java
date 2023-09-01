@@ -37,16 +37,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
+        return http
                 .authorizeHttpRequests(
                         auth -> auth
                                 .requestMatchers("/design", "/orders/**").authenticated()
                                 .requestMatchers("/", "/**").permitAll()
                 )
-//                .headers(headersConfigurer -> headersConfigurer
-//                                                .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
-//                )
-//                .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
@@ -56,8 +52,14 @@ public class SecurityConfig {
                 .oauth2Login(
                         oauth2 -> oauth2
                                 .loginPage("/login")
-                );
-
-        return http.build();
+                )
+                // Necessary to access H2-console, must remove for production ----------------------------
+                .headers(
+                        headersConfigurer -> headersConfigurer
+                                .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
+                )
+                .csrf(AbstractHttpConfigurer::disable)
+                // ---------------------------------------------------------------------------------------
+                .build();
     }
 }
