@@ -32,7 +32,4 @@ public class Taco {
     @ManyToMany()
     private List<Ingredient> ingredients;
 
-//    public void addIngredient(Ingredient ingredient) {
-//        this.ingredientRefs.add(ingredient);
-//    }
 }
