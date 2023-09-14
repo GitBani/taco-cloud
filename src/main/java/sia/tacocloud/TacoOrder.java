@@ -5,6 +5,7 @@ import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import lombok.Data;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Data
 @Entity
+@RestResource(rel = "orders", path = "orders")
 public class TacoOrder implements Serializable {
 
     private static final long serializedVersionUID = 1L;
