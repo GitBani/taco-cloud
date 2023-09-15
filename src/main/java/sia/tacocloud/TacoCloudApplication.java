@@ -65,6 +65,9 @@ public class TacoCloudApplication {
 			taco3.setName("Vegan");
 			taco3.setIngredients(Arrays.asList(cornTortilla, dicedTomatoes, lettuce, salsa, sourCream));
 			tacoRepository.save(taco3);
+
+			User developer = new User("dev", passwordEncoder.encode("123"), "Bani Somo", "b", "b", "b", "b", "905");
+			userRepository.save(developer);
 		};
 	}
 }

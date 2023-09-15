@@ -3,45 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
     <h1>Register</h1>
 
     <img th:src="@{/images/TacoCloud.png}" alt="Taco Cloud logo">
 
-    <!--
-        Todo:
-         input validation,
-         potentially fix "confirm" field mapping to nothing by adding that field to RegistrationForm
-            -> turns out this isn't an issue, still may need it to enforce it being equal to the password entered
-    -->
-    <form method="POST" th:action="@{/register}" id="registerForm">
+    <form method="POST" th:action="@{/register}" th:object="${registrationForm}" id="registerForm">
         <label for="username">Username: </label>
-        <input type="text" name="username"> <br>
+        <input type="text" name="username">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}">Username Error
+        </span> <br>
 
         <label for="password">Password: </label>
-        <input type="text" name="password"> <br>
+        <input type="text" name="password">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}">Password Error
+        </span> <br>
 
         <label for="confirm">Confirm password: </label>
-        <input type="text" name="confirm"> <br>
+        <input type="text" name="confirmPassword">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('confirmPassword')}"
+              th:errors="*{confirmPassword}">ConfirmPassword Error
+        </span> <br>
 
         <label for="fullName">Full name: </label>
-        <input type="text" name="fullName"> <br>
+        <input type="text" name="fullName">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('fullName')}"
+              th:errors="*{fullName}">FullName Error
+        </span> <br>
 
         <label for="street">Street: </label>
-        <input type="text" name="street"> <br>
+        <input type="text" name="street">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('street')}"
+              th:errors="*{street}">Street Error
+        </span> <br>
 
         <label for="city">City: </label>
-        <input type="text" name="city"> <br>
+        <input type="text" name="city">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('city')}"
+              th:errors="*{city}">City Error
+        </span> <br>
 
         <label for="state">State: </label>
-        <input type="text" name="state"> <br>
+        <input type="text" name="state">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('state')}"
+              th:errors="*{state}">State Error
+        </span> <br>
 
         <label for="zip">Zip code: </label>
-        <input type="text" name="zip"> <br>
+        <input type="text" name="zip">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('zip')}"
+              th:errors="*{zip}">Zip Error
+        </span> <br>
 
         <label for="phone">Phone number: </label>
-        <input type="text" name="phone"> <br>
+        <input type="text" name="phone">
+        <span class="validation-error"
+              th:if="${#fields.hasErrors('phone')}"
+              th:errors="*{phone}">Phone Error
+        </span> <br>
 
         <input type="submit" value="Register">
     </form>
