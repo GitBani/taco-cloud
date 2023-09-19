@@ -11,6 +11,7 @@ public class RegistrationForm {
 
     @NotBlank
     @Size(min = 5, max = 16)
+    // Uniqueness is validated with RegistrationValidator
     private String username;
 
     @NotBlank
